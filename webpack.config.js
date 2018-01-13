@@ -1,4 +1,9 @@
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const extractSass = new ExtractTextPlugin({
+  filename: 'react-nice-input-password.css',
+});
 
 module.exports = {
   entry: './src',
@@ -22,8 +27,18 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'postcss-loader', 'sass-loader'],
+        use: extractSass.extract({
+          use: [{
+            loader: 'css-loader',
+          }, {
+            loader: 'sass-loader',
+          }],
+          fallback: 'style-loader',
+        }),
       },
     ],
   },
+  plugins: [
+    extractSass,
+  ],
 };
