@@ -1,8 +1,9 @@
 {
   "name": "react-nice-input-password",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "React input password component",
-  "main": "build/react-nice-input-password.js",
+  "main": "dist/react-nice-input-password.js",
+  "style": "dist/react-nice-input-password.css",
   "scripts": {
     "start": "parcel public/index.html --open",
     "test": "jest",
