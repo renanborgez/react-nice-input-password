@@ -1,6 +1,6 @@
 {
   "name": "react-nice-input-password",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "React input password component",
   "main": "dist/react-nice-input-password.js",
   "style": "dist/react-nice-input-password.css",
@@ -64,6 +64,7 @@
     "webpack": "^3.10.0"
   },
   "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
     "css-loader": "^0.28.8",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",

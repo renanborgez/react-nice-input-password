@@ -652,7 +652,7 @@ var NiceInputPassword = function (_React$Component) {
 
         return _react2['default'].createElement(
           'div',
-          { className: 'form-group input-password ' + String(className) },
+          { className: 'form-group input-password ' + className },
           _react2['default'].createElement(_InputLabel2['default'], {
             label: label,
             name: name,
@@ -1501,26 +1501,30 @@ var defaultProps = {
   value: ''
 };
 
-var InputLabel = function InputLabel(_ref) {
-  var name = _ref.name,
-      label = _ref.label,
-      placeholder = _ref.placeholder,
-      value = _ref.value,
-      onChange = _ref.onChange;
-  return _react2['default'].createElement(
-    'label',
-    { htmlFor: name },
-    label,
-    _react2['default'].createElement('input', {
-      name: name,
-      id: name,
-      value: value,
-      type: 'password',
-      placeholder: placeholder,
-      onChange: onChange
-    })
-  );
-};
+var InputLabel = function () {
+  function InputLabel(_ref) {
+    var name = _ref.name,
+        label = _ref.label,
+        placeholder = _ref.placeholder,
+        value = _ref.value,
+        onChange = _ref.onChange;
+    return _react2['default'].createElement(
+      'label',
+      { htmlFor: name },
+      label,
+      _react2['default'].createElement('input', {
+        name: name,
+        id: name,
+        value: value,
+        type: 'password',
+        placeholder: placeholder,
+        onChange: onChange
+      })
+    );
+  }
+
+  return InputLabel;
+}();
 
 InputLabel.propTypes = propTypes;
 InputLabel.defaultProps = defaultProps;
@@ -1569,79 +1573,83 @@ var defaultProps = {
   successClassName: 'success'
 };
 
-var Levels = function Levels(_ref) {
-  var securityLevels = _ref.securityLevels,
-      value = _ref.value,
-      normalClassName = _ref.normalClassName,
-      dangerClassName = _ref.dangerClassName,
-      warningClassName = _ref.warningClassName,
-      successClassName = _ref.successClassName;
+var Levels = function () {
+  function Levels(_ref) {
+    var securityLevels = _ref.securityLevels,
+        value = _ref.value,
+        normalClassName = _ref.normalClassName,
+        dangerClassName = _ref.dangerClassName,
+        warningClassName = _ref.warningClassName,
+        successClassName = _ref.successClassName;
 
-  if (!securityLevels || securityLevels.length === 0) {
-    return null;
-  }
+    if (!securityLevels || securityLevels.length === 0) {
+      return null;
+    }
 
-  var levelsMarkerNode = securityLevels.map(function (item, index) {
-    var itemClassName = '';
-    var levelsLength = securityLevels.length;
-    var levelsValidLength = securityLevels.filter(function (level) {
-      return level.isValid;
-    }).length;
+    var levelsMarkerNode = securityLevels.map(function (item, index) {
+      var itemClassName = '';
+      var levelsLength = securityLevels.length;
+      var levelsValidLength = securityLevels.filter(function (level) {
+        return level.isValid;
+      }).length;
 
-    if (value !== '') {
-      switch (true) {
-        case levelsLength === levelsValidLength:
-          itemClassName = successClassName;
-          break;
+      if (value !== '') {
+        switch (true) {
+          case levelsLength === levelsValidLength:
+            itemClassName = successClassName;
+            break;
 
-        case levelsValidLength === 1 && index === 0:
-          itemClassName = dangerClassName;
-          break;
+          case levelsValidLength === 1 && index === 0:
+            itemClassName = dangerClassName;
+            break;
 
-        case levelsValidLength > 1 && index < levelsValidLength:
-          itemClassName = warningClassName;
-          break;
+          case levelsValidLength > 1 && index < levelsValidLength:
+            itemClassName = warningClassName;
+            break;
 
-        default:
-          itemClassName = normalClassName;
-          break;
+          default:
+            itemClassName = normalClassName;
+            break;
+        }
       }
-    }
 
-    return _react2['default'].createElement('div', { className: itemClassName, key: 'marker-' + String(escape(item.descriptionLabel)) });
-  });
+      return _react2['default'].createElement('div', { className: itemClassName, key: 'marker-' + escape(item.descriptionLabel) });
+    });
 
-  var levelsDescriptionNode = securityLevels.map(function (item) {
-    var itemClassName = '';
+    var levelsDescriptionNode = securityLevels.map(function (item) {
+      var itemClassName = '';
 
-    if (item.isValid && value !== '') {
-      itemClassName = successClassName;
-    } else if (!item.isValid && value !== '') {
-      itemClassName = dangerClassName;
-    }
+      if (item.isValid && value !== '') {
+        itemClassName = successClassName;
+      } else if (!item.isValid && value !== '') {
+        itemClassName = dangerClassName;
+      }
+
+      return _react2['default'].createElement(
+        'li',
+        { className: itemClassName, key: escape(item.descriptionLabel) },
+        item.descriptionLabel
+      );
+    });
 
     return _react2['default'].createElement(
-      'li',
-      { className: itemClassName, key: escape(item.descriptionLabel) },
-      item.descriptionLabel
-    );
-  });
-
-  return _react2['default'].createElement(
-    'div',
-    { className: 'input-password__level' },
-    _react2['default'].createElement(
       'div',
-      { className: 'input-password__marker' },
-      levelsMarkerNode
-    ),
-    _react2['default'].createElement(
-      'ul',
-      { className: 'input-password__description' },
-      levelsDescriptionNode
-    )
-  );
-};
+      { className: 'input-password__level' },
+      _react2['default'].createElement(
+        'div',
+        { className: 'input-password__marker' },
+        levelsMarkerNode
+      ),
+      _react2['default'].createElement(
+        'ul',
+        { className: 'input-password__description' },
+        levelsDescriptionNode
+      )
+    );
+  }
+
+  return Levels;
+}();
 
 Levels.propTypes = propTypes;
 Levels.defaultProps = defaultProps;

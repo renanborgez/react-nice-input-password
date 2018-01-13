@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import ReactTestUtils from 'react-dom/test-utils';
+// import ReactTestUtils from 'react-dom/test-utils';
 
 import NiceInputPassword from './NiceInputPassword';
 
