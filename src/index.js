@@ -1,1 +1,3 @@
-import NiceInputPassword from './NiceInputPassword.jsx';
+import NiceInputPassword from './NiceInputPassword';
+
+export default NiceInputPassword;
