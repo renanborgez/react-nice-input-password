@@ -10,6 +10,8 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'react-nice-input-password.js',
+    libraryTarget: 'umd',
+    library: 'ReactComponentNpm',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
