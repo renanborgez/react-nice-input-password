@@ -1,0 +1,44 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "es6": true,
+    "jest": true,
+    "browser": true
+  },
+  "extends": [
+    "airbnb"
+  ],
+  "plugins": [
+    "react",
+    "jest"
+  ],
+  "globals": {
+      "document": true,
+      "navigator": true
+  },
+  "rules": {
+    "indent": [
+      "error",
+      2
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "import/no-extraneous-dependencies": [
+      "error", {
+        "peerDependencies": true
+      }
+    ],
+    "import/no-named-as-default": "off",
+    "react/forbid-prop-types": "off"
+  }
+}

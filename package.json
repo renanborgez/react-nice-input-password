@@ -1,0 +1,47 @@
+{
+  "name": "react-nice-input-password",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel public/index.html",
+    "test": "jest",
+    "build": "parcel build src/NiceInputPassword --out-dir build/output"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renanborgez/react-nice-input-password.git"
+  },
+  "keywords": [
+    "react",
+    "input",
+    "password"
+  ],
+  "author": "Renan Borges",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/renanborgez/react-nice-input-password/issues"
+  },
+  "homepage": "https://github.com/renanborgez/react-nice-input-password#readme",
+  "dependencies": {
+    "babel-eslint": "^8.2.1",
+    "babel-preset-airbnb": "^2.4.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.6.1",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "jest": "^22.0.6",
+    "node-sass": "^4.7.2",
+    "parcel-bundler": "^1.4.1",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "postcss-modules": "^1.1.0"
+  }
+}
