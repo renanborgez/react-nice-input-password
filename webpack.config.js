@@ -10,8 +10,8 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'react-nice-input-password.js',
+    library: 'shared-components',
     libraryTarget: 'umd',
-    library: 'ReactComponentNpm',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
@@ -20,6 +20,10 @@ module.exports = {
       './src/components',
       'node_modules',
     ],
+  },
+  externals: {
+    react: 'react',
+    'react-dom': 'react-dom',
   },
   module: {
     loaders: [

@@ -1,6 +1,6 @@
 {
   "name": "react-nice-input-password",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "React input password component",
   "main": "dist/react-nice-input-password.js",
   "style": "dist/react-nice-input-password.css",
