@@ -22,8 +22,8 @@ module.exports = {
     ],
   },
   externals: {
-    react: 'react',
-    'react-dom': 'react-dom',
+    react: 'commonjs react',
+    'react-dom': 'commonjs react-dom',
   },
   module: {
     loaders: [
