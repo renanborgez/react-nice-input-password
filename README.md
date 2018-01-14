@@ -20,7 +20,7 @@ You can then import react-nice-input-password and its styles in your application
 ```js
 import NiceInputPassword from 'react-nice-input-password';
 import 'react-nice-input-password/dist/react-nice-input-password.css';
-
+```
 
 ## Usage
 
