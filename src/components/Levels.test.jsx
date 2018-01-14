@@ -33,12 +33,7 @@ describe('components', () => {
       expect(markers.length).toBe(4);
 
       const descriptions = div.querySelectorAll('.input-password__description li');
-      expect(descriptions.length).toBe(4);
-
-      expect(descriptions[0].textContent).toBe(securityLevels[0].descriptionLabel);
-      expect(descriptions[1].textContent).toBe(securityLevels[1].descriptionLabel);
-      expect(descriptions[2].textContent).toBe(securityLevels[2].descriptionLabel);
-      expect(descriptions[3].textContent).toBe(securityLevels[3].descriptionLabel);
+      expect(descriptions.length).toBe(0);
     });
 
     it('renders marks and descriptions with NO class when all levels is valid and there is NO value', () => {
@@ -67,6 +62,7 @@ describe('components', () => {
         successClassName="green"
         warningClassName="yellow"
         normalClassName="gray"
+        showSecurityLevelDescription
         value=""
       />, div);
 
@@ -110,6 +106,7 @@ describe('components', () => {
         successClassName="green"
         warningClassName="yellow"
         normalClassName="gray"
+        showSecurityLevelDescription
         value="abcd"
       />, div);
 
@@ -153,6 +150,7 @@ describe('components', () => {
         successClassName="green"
         warningClassName="yellow"
         normalClassName="gray"
+        showSecurityLevelDescription
         value="abcd"
       />, div);
 
@@ -196,6 +194,7 @@ describe('components', () => {
         successClassName="green"
         warningClassName="yellow"
         normalClassName="gray"
+        showSecurityLevelDescription
         value="abcd"
       />, div);
 
@@ -239,6 +238,7 @@ describe('components', () => {
         successClassName="green"
         warningClassName="yellow"
         normalClassName="gray"
+        showSecurityLevelDescription
         value="abcd"
       />, div);
 

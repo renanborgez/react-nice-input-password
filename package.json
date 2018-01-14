@@ -6,7 +6,8 @@
   "style": "dist/react-nice-input-password.css",
   "scripts": {
     "start": "parcel public/index.html --open",
-    "test": "jest",
+    "test": "export NODE_EVNV=test; jest",
+    "coverage": "jest --coverage",
     "build": "webpack"
   },
   "files": [
@@ -43,6 +44,7 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
     "babel-loader": "^7.1.2",
+    "babel-plugin-import-noop": "^1.0.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-airbnb": "^2.4.0",
