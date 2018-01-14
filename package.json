@@ -6,9 +6,10 @@
   "style": "dist/react-nice-input-password.css",
   "scripts": {
     "start": "parcel public/index.html --open",
-    "test": "export NODE_EVNV=test; jest",
+    "test": "export NODE_ENV=test; jest",
     "coverage": "jest --coverage",
-    "build": "webpack"
+    "prepublish": "jest --coverage",
+    "build": "webpack --env.production"
   },
   "files": [
     "dist/react-nice-input-password.js",

@@ -3,6 +3,8 @@
   "env": {
     "test": {
       "plugins": ["import-noop"]
+    },
+    "production": {
     }
   }
 }
