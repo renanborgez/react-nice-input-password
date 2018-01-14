@@ -551,7 +551,8 @@ var propTypes = {
   name: _propTypes2['default'].string.isRequired,
   className: _propTypes2['default'].string,
   value: _propTypes2['default'].string,
-  showLevels: _propTypes2['default'].bool,
+  showSecurityLevelBar: _propTypes2['default'].bool,
+  showSecurityLevelDescription: _propTypes2['default'].bool,
   normalClassName: _propTypes2['default'].string,
   dangerClassName: _propTypes2['default'].string,
   warningClassName: _propTypes2['default'].string,
@@ -566,7 +567,8 @@ var propTypes = {
 var defaultProps = {
   value: '',
   className: '',
-  showLevels: false,
+  showSecurityLevelBar: false,
+  showSecurityLevelDescription: false,
   securityLevels: [],
   normalClassName: 'none',
   dangerClassName: 'danger',
@@ -643,7 +645,8 @@ var NiceInputPassword = function (_React$Component) {
         var _props = this.props,
             label = _props.label,
             name = _props.name,
-            showLevels = _props.showLevels,
+            showSecurityLevelBar = _props.showSecurityLevelBar,
+            showSecurityLevelDescription = _props.showSecurityLevelDescription,
             securityLevels = _props.securityLevels,
             normalClassName = _props.normalClassName,
             dangerClassName = _props.dangerClassName,
@@ -661,12 +664,13 @@ var NiceInputPassword = function (_React$Component) {
             value: value,
             onChange: this.handleChange
           }),
-          showLevels && securityLevels && securityLevels.length > 0 ? _react2['default'].createElement(_Levels2['default'], {
+          showSecurityLevelBar && securityLevels && securityLevels.length > 0 ? _react2['default'].createElement(_Levels2['default'], {
             securityLevels: this.state.levels,
             normalClassName: normalClassName,
             dangerClassName: dangerClassName,
             warningClassName: warningClassName,
             successClassName: successClassName,
+            showSecurityLevelDescription: showSecurityLevelDescription,
             value: value
           }) : null
         );
@@ -1559,6 +1563,7 @@ var propTypes = {
     isValid: _propTypes2['default'].bool,
     descriptionLabel: _propTypes2['default'].oneOfType([_propTypes2['default'].string, _propTypes2['default'].element]).isRequired
   })),
+  showSecurityLevelDescription: _propTypes2['default'].bool,
   normalClassName: _propTypes2['default'].string,
   dangerClassName: _propTypes2['default'].string,
   warningClassName: _propTypes2['default'].string,
@@ -1569,6 +1574,7 @@ var propTypes = {
 var defaultProps = {
   securityLevels: [],
   value: '',
+  showSecurityLevelDescription: false,
   normalClassName: 'none',
   dangerClassName: 'danger',
   warningClassName: 'warning',
@@ -1578,6 +1584,7 @@ var defaultProps = {
 var Levels = function () {
   function Levels(_ref) {
     var securityLevels = _ref.securityLevels,
+        showSecurityLevelDescription = _ref.showSecurityLevelDescription,
         value = _ref.value,
         normalClassName = _ref.normalClassName,
         dangerClassName = _ref.dangerClassName,
@@ -1642,11 +1649,11 @@ var Levels = function () {
         { className: 'input-password__marker' },
         levelsMarkerNode
       ),
-      _react2['default'].createElement(
+      showSecurityLevelDescription ? _react2['default'].createElement(
         'ul',
         { className: 'input-password__description' },
         levelsDescriptionNode
-      )
+      ) : null
     );
   }
 

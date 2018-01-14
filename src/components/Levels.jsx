@@ -9,6 +9,7 @@ const propTypes = {
       PropTypes.element,
     ]).isRequired,
   })),
+  showSecurityLevelDescription: PropTypes.bool,
   normalClassName: PropTypes.string,
   dangerClassName: PropTypes.string,
   warningClassName: PropTypes.string,
@@ -19,6 +20,7 @@ const propTypes = {
 const defaultProps = {
   securityLevels: [],
   value: '',
+  showSecurityLevelDescription: false,
   normalClassName: 'none',
   dangerClassName: 'danger',
   warningClassName: 'warning',
@@ -27,6 +29,7 @@ const defaultProps = {
 
 const Levels = ({
   securityLevels,
+  showSecurityLevelDescription,
   value,
   normalClassName,
   dangerClassName,
@@ -88,9 +91,10 @@ const Levels = ({
       <div className="input-password__marker">
         {levelsMarkerNode}
       </div>
-      <ul className="input-password__description">
-        {levelsDescriptionNode}
-      </ul>
+      {showSecurityLevelDescription ?
+        <ul className="input-password__description">
+          {levelsDescriptionNode}
+        </ul> : null}
     </div>
   );
 };

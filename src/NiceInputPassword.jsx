@@ -13,7 +13,8 @@ const propTypes = {
   name: PropTypes.string.isRequired,
   className: PropTypes.string,
   value: PropTypes.string,
-  showLevels: PropTypes.bool,
+  showSecurityLevelBar: PropTypes.bool,
+  showSecurityLevelDescription: PropTypes.bool,
   normalClassName: PropTypes.string,
   dangerClassName: PropTypes.string,
   warningClassName: PropTypes.string,
@@ -31,7 +32,8 @@ const propTypes = {
 const defaultProps = {
   value: '',
   className: '',
-  showLevels: false,
+  showSecurityLevelBar: false,
+  showSecurityLevelDescription: false,
   securityLevels: [],
   normalClassName: 'none',
   dangerClassName: 'danger',
@@ -84,7 +86,8 @@ class NiceInputPassword extends React.Component {
     const {
       label,
       name,
-      showLevels,
+      showSecurityLevelBar,
+      showSecurityLevelDescription,
       securityLevels,
       normalClassName,
       dangerClassName,
@@ -101,13 +104,14 @@ class NiceInputPassword extends React.Component {
           value={value}
           onChange={this.handleChange}
         />
-        {showLevels && securityLevels && securityLevels.length > 0 ? (
+        {showSecurityLevelBar && securityLevels && securityLevels.length > 0 ? (
           <Levels
             securityLevels={this.state.levels}
             normalClassName={normalClassName}
             dangerClassName={dangerClassName}
             warningClassName={warningClassName}
             successClassName={successClassName}
+            showSecurityLevelDescription={showSecurityLevelDescription}
             value={value}
           />
         ) : null }
