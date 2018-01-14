@@ -265,47 +265,6 @@ process.umask = function() { return 0; };
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
-
-module.exports = require("react");
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-if (process.env.NODE_ENV !== 'production') {
-  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
-    Symbol.for &&
-    Symbol.for('react.element')) ||
-    0xeac7;
-
-  var isValidElement = function(object) {
-    return typeof object === 'object' &&
-      object !== null &&
-      object.$$typeof === REACT_ELEMENT_TYPE;
-  };
-
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(9)(isValidElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(12)();
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -347,7 +306,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 module.exports = emptyFunction;
 
 /***/ }),
-/* 4 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -407,7 +366,7 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 5 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -426,6 +385,47 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports = require("react");
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+    Symbol.for &&
+    Symbol.for('react.element')) ||
+    0xeac7;
+
+  var isValidElement = function(object) {
+    return typeof object === 'object' &&
+      object !== null &&
+      object.$$typeof === REACT_ELEMENT_TYPE;
+  };
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(9)(isValidElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(12)();
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -440,7 +440,7 @@ module.exports = ReactPropTypesSecret;
 
 
 
-var emptyFunction = __webpack_require__(3);
+var emptyFunction = __webpack_require__(1);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -520,11 +520,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(1);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(2);
+var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -533,10 +533,6 @@ __webpack_require__(13);
 var _InputLabel = __webpack_require__(14);
 
 var _InputLabel2 = _interopRequireDefault(_InputLabel);
-
-var _Levels = __webpack_require__(15);
-
-var _Levels2 = _interopRequireDefault(_Levels);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -603,9 +599,9 @@ var NiceInputPassword = function (_React$Component) {
       function handleValidateAndGetLevels(value) {
         var levels = this.props.securityLevels.map(function (securityLevel) {
           var isValid = false;
-          if (typeof securityLevel.validator === 'function') {
+          if (securityLevel.validator && typeof securityLevel.validator === 'function') {
             isValid = securityLevel.validator(value);
-          } else {
+          } else if (securityLevel.validator) {
             isValid = securityLevel.validator.test(value);
           }
 
@@ -642,6 +638,8 @@ var NiceInputPassword = function (_React$Component) {
     key: 'render',
     value: function () {
       function render() {
+        var _this2 = this;
+
         var _props = this.props,
             label = _props.label,
             name = _props.name,
@@ -655,24 +653,82 @@ var NiceInputPassword = function (_React$Component) {
             className = _props.className,
             value = _props.value;
 
+
+        var inputClassName = '';
+        var levelsMarkerNode = this.state.levels.map(function (item, index) {
+          var markclassName = '';
+          var levelsLength = _this2.state.levels.length;
+          var levelsValidLength = _this2.state.levels.filter(function (level) {
+            return level.isValid;
+          }).length;
+
+          if (value !== '') {
+            switch (true) {
+              case levelsLength === levelsValidLength:
+                markclassName = successClassName;
+                break;
+
+              case levelsValidLength === 1 && index === 0:
+                markclassName = dangerClassName;
+                break;
+
+              case levelsValidLength > 1 && index < levelsValidLength:
+                markclassName = warningClassName;
+                break;
+
+              default:
+                markclassName = normalClassName;
+                break;
+            }
+          }
+
+          if (index === 0) {
+            inputClassName = markclassName;
+          }
+
+          return _react2['default'].createElement('div', { className: markclassName, key: 'marker-' + escape(item.descriptionLabel) });
+        });
+
+        var levelsDescriptionNode = this.state.levels.map(function (item) {
+          var descriptionClassName = '';
+
+          if (item.isValid && value !== '') {
+            descriptionClassName = successClassName;
+          } else if (!item.isValid && value !== '') {
+            descriptionClassName = dangerClassName;
+          }
+
+          return _react2['default'].createElement(
+            'li',
+            { className: descriptionClassName, key: escape(item.descriptionLabel) },
+            item.descriptionLabel
+          );
+        });
+
         return _react2['default'].createElement(
           'div',
           { className: 'form-group input-password ' + className },
           _react2['default'].createElement(_InputLabel2['default'], {
             label: label,
             name: name,
+            className: inputClassName,
             value: value,
             onChange: this.handleChange
           }),
-          showSecurityLevelBar && securityLevels && securityLevels.length > 0 ? _react2['default'].createElement(_Levels2['default'], {
-            securityLevels: this.state.levels,
-            normalClassName: normalClassName,
-            dangerClassName: dangerClassName,
-            warningClassName: warningClassName,
-            successClassName: successClassName,
-            showSecurityLevelDescription: showSecurityLevelDescription,
-            value: value
-          }) : null
+          securityLevels && securityLevels.length > 0 ? _react2['default'].createElement(
+            'div',
+            { className: 'input-password__level' },
+            showSecurityLevelBar ? _react2['default'].createElement(
+              'div',
+              { className: 'input-password__marker' },
+              levelsMarkerNode
+            ) : null,
+            showSecurityLevelDescription ? _react2['default'].createElement(
+              'ul',
+              { className: 'input-password__description' },
+              levelsDescriptionNode
+            ) : null
+          ) : null
         );
       }
 
@@ -702,12 +758,12 @@ exports['default'] = NiceInputPassword;
 
 
 
-var emptyFunction = __webpack_require__(3);
-var invariant = __webpack_require__(4);
+var emptyFunction = __webpack_require__(1);
+var invariant = __webpack_require__(2);
 var warning = __webpack_require__(6);
 var assign = __webpack_require__(10);
 
-var ReactPropTypesSecret = __webpack_require__(5);
+var ReactPropTypesSecret = __webpack_require__(3);
 var checkPropTypes = __webpack_require__(11);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
@@ -1350,9 +1406,9 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 if (process.env.NODE_ENV !== 'production') {
-  var invariant = __webpack_require__(4);
+  var invariant = __webpack_require__(2);
   var warning = __webpack_require__(6);
-  var ReactPropTypesSecret = __webpack_require__(5);
+  var ReactPropTypesSecret = __webpack_require__(3);
   var loggedTypeFailures = {};
 }
 
@@ -1416,9 +1472,9 @@ module.exports = checkPropTypes;
 
 
 
-var emptyFunction = __webpack_require__(3);
-var invariant = __webpack_require__(4);
-var ReactPropTypesSecret = __webpack_require__(5);
+var emptyFunction = __webpack_require__(1);
+var invariant = __webpack_require__(2);
+var ReactPropTypesSecret = __webpack_require__(3);
 
 module.exports = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
@@ -1484,11 +1540,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(1);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(2);
+var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -1497,6 +1553,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 var propTypes = {
   name: _propTypes2['default'].string.isRequired,
   label: _propTypes2['default'].oneOfType([_propTypes2['default'].string, _propTypes2['default'].element]).isRequired,
+  className: _propTypes2['default'].string,
   placeholder: _propTypes2['default'].string,
   value: _propTypes2['default'].string,
   onChange: _propTypes2['default'].func.isRequired
@@ -1504,7 +1561,8 @@ var propTypes = {
 
 var defaultProps = {
   placeholder: '',
-  value: ''
+  value: '',
+  className: ''
 };
 
 var InputLabel = function () {
@@ -1513,10 +1571,11 @@ var InputLabel = function () {
         label = _ref.label,
         placeholder = _ref.placeholder,
         value = _ref.value,
+        className = _ref.className,
         onChange = _ref.onChange;
     return _react2['default'].createElement(
       'label',
-      { htmlFor: name },
+      { htmlFor: name, className: className },
       label,
       _react2['default'].createElement('input', {
         name: name,
@@ -1536,134 +1595,6 @@ InputLabel.propTypes = propTypes;
 InputLabel.defaultProps = defaultProps;
 
 exports['default'] = InputLabel;
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(2);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-var propTypes = {
-  securityLevels: _propTypes2['default'].arrayOf(_propTypes2['default'].shape({
-    isValid: _propTypes2['default'].bool,
-    descriptionLabel: _propTypes2['default'].oneOfType([_propTypes2['default'].string, _propTypes2['default'].element]).isRequired
-  })),
-  showSecurityLevelDescription: _propTypes2['default'].bool,
-  normalClassName: _propTypes2['default'].string,
-  dangerClassName: _propTypes2['default'].string,
-  warningClassName: _propTypes2['default'].string,
-  successClassName: _propTypes2['default'].string,
-  value: _propTypes2['default'].string
-};
-
-var defaultProps = {
-  securityLevels: [],
-  value: '',
-  showSecurityLevelDescription: false,
-  normalClassName: 'none',
-  dangerClassName: 'danger',
-  warningClassName: 'warning',
-  successClassName: 'success'
-};
-
-var Levels = function () {
-  function Levels(_ref) {
-    var securityLevels = _ref.securityLevels,
-        showSecurityLevelDescription = _ref.showSecurityLevelDescription,
-        value = _ref.value,
-        normalClassName = _ref.normalClassName,
-        dangerClassName = _ref.dangerClassName,
-        warningClassName = _ref.warningClassName,
-        successClassName = _ref.successClassName;
-
-    if (!securityLevels || securityLevels.length === 0) {
-      return null;
-    }
-
-    var levelsMarkerNode = securityLevels.map(function (item, index) {
-      var itemClassName = '';
-      var levelsLength = securityLevels.length;
-      var levelsValidLength = securityLevels.filter(function (level) {
-        return level.isValid;
-      }).length;
-
-      if (value !== '') {
-        switch (true) {
-          case levelsLength === levelsValidLength:
-            itemClassName = successClassName;
-            break;
-
-          case levelsValidLength === 1 && index === 0:
-            itemClassName = dangerClassName;
-            break;
-
-          case levelsValidLength > 1 && index < levelsValidLength:
-            itemClassName = warningClassName;
-            break;
-
-          default:
-            itemClassName = normalClassName;
-            break;
-        }
-      }
-
-      return _react2['default'].createElement('div', { className: itemClassName, key: 'marker-' + escape(item.descriptionLabel) });
-    });
-
-    var levelsDescriptionNode = securityLevels.map(function (item) {
-      var itemClassName = '';
-
-      if (item.isValid && value !== '') {
-        itemClassName = successClassName;
-      } else if (!item.isValid && value !== '') {
-        itemClassName = dangerClassName;
-      }
-
-      return _react2['default'].createElement(
-        'li',
-        { className: itemClassName, key: escape(item.descriptionLabel) },
-        item.descriptionLabel
-      );
-    });
-
-    return _react2['default'].createElement(
-      'div',
-      { className: 'input-password__level' },
-      _react2['default'].createElement(
-        'div',
-        { className: 'input-password__marker' },
-        levelsMarkerNode
-      ),
-      showSecurityLevelDescription ? _react2['default'].createElement(
-        'ul',
-        { className: 'input-password__description' },
-        levelsDescriptionNode
-      ) : null
-    );
-  }
-
-  return Levels;
-}();
-
-Levels.propTypes = propTypes;
-Levels.defaultProps = defaultProps;
-
-exports['default'] = Levels;
 
 /***/ })
 /******/ ]);

@@ -9,7 +9,7 @@ describe('components', () => {
     it('renders successfully', () => {
       const div = document.createElement('div');
       render(<InputLabel
-        label=""
+        label="myLabel"
         name=""
         onChange={() => {}}
         value=""
@@ -42,7 +42,7 @@ describe('components', () => {
 
       const div = document.createElement('div');
       render(<InputLabel
-        label=""
+        label="myLabel"
         name={elementName}
         onChange={onChange}
         value=""

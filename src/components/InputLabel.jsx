@@ -7,6 +7,7 @@ const propTypes = {
     PropTypes.string,
     PropTypes.element,
   ]).isRequired,
+  className: PropTypes.string,
   placeholder: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
@@ -15,6 +16,7 @@ const propTypes = {
 const defaultProps = {
   placeholder: '',
   value: '',
+  className: '',
 };
 
 const InputLabel = ({
@@ -22,9 +24,10 @@ const InputLabel = ({
   label,
   placeholder,
   value,
+  className,
   onChange,
 }) => (
-  <label htmlFor={name}>
+  <label htmlFor={name} className={className}>
     {label}
     <input
       name={name}

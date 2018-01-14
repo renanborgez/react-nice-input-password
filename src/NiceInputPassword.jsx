@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import './NiceInputPassword.scss';
 import InputLabel from './components/InputLabel';
-import Levels from './components/Levels';
 
 const propTypes = {
   label: PropTypes.oneOfType([
@@ -55,9 +54,9 @@ class NiceInputPassword extends React.Component {
   handleValidateAndGetLevels(value) {
     const levels = this.props.securityLevels.map((securityLevel) => {
       let isValid = false;
-      if (typeof securityLevel.validator === 'function') {
+      if (securityLevel.validator && typeof securityLevel.validator === 'function') {
         isValid = securityLevel.validator(value);
-      } else {
+      } else if (securityLevel.validator) {
         isValid = securityLevel.validator.test(value);
       }
 
@@ -96,24 +95,78 @@ class NiceInputPassword extends React.Component {
       className,
       value,
     } = this.props;
+
+    let inputClassName = '';
+    const levelsMarkerNode =
+    this.state.levels.map((item, index) => {
+      let markclassName = '';
+      const levelsLength = this.state.levels.length;
+      const levelsValidLength = this.state.levels.filter(level => level.isValid).length;
+
+      if (value !== '') {
+        switch (true) {
+        case levelsLength === levelsValidLength:
+          markclassName = successClassName;
+          break;
+
+        case levelsValidLength === 1 && index === 0:
+          markclassName = dangerClassName;
+          break;
+
+        case levelsValidLength > 1 && index < levelsValidLength:
+          markclassName = warningClassName;
+          break;
+
+        default:
+          markclassName = normalClassName;
+          break;
+        }
+      }
+
+      if (index === 0) {
+        inputClassName = markclassName;
+      }
+
+      return <div className={markclassName} key={`marker-${escape(item.descriptionLabel)}`} />;
+    });
+
+    const levelsDescriptionNode =
+      this.state.levels.map((item) => {
+        let descriptionClassName = '';
+
+        if (item.isValid && value !== '') {
+          descriptionClassName = successClassName;
+        } else if (!item.isValid && value !== '') {
+          descriptionClassName = dangerClassName;
+        }
+
+        return (
+          <li className={descriptionClassName} key={escape(item.descriptionLabel)}>
+            {item.descriptionLabel}
+          </li>
+        );
+      });
+
     return (
       <div className={`form-group input-password ${className}`}>
         <InputLabel
           label={label}
           name={name}
+          className={inputClassName}
           value={value}
           onChange={this.handleChange}
         />
-        {showSecurityLevelBar && securityLevels && securityLevels.length > 0 ? (
-          <Levels
-            securityLevels={this.state.levels}
-            normalClassName={normalClassName}
-            dangerClassName={dangerClassName}
-            warningClassName={warningClassName}
-            successClassName={successClassName}
-            showSecurityLevelDescription={showSecurityLevelDescription}
-            value={value}
-          />
+        {securityLevels && securityLevels.length > 0 ? (
+          <div className="input-password__level">
+            {showSecurityLevelBar ?
+              <div className="input-password__marker">
+                {levelsMarkerNode}
+              </div> : null }
+            {showSecurityLevelDescription ?
+              <ul className="input-password__description">
+                {levelsDescriptionNode}
+              </ul> : null}
+          </div>
         ) : null }
       </div>
     );
