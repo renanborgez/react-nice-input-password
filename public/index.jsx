@@ -61,7 +61,7 @@ class App extends React.Component {
         />
         <hr />
 
-        <h2>With levelbar and descritionLeveBar</h2>
+        <h2>With levelbar and descritionLevelBar</h2>
         <NiceInputPassword
           label="Password"
           name="pass3"

@@ -5,7 +5,7 @@ React-Nice-Input-Password
 
 A input password control built with and for [React](http://facebook.github.io/react/index.html)
 
-[![Sample](https://image.ibb.co/ivG6rm/sample.png)](https://image.ibb.co/ivG6rm/sample.png)
+[![Sample](https://image.ibb.co/dJNFHR/sample.png)](https://image.ibb.co/dJNFHR/sample.png)
 
 ## Installation
 
