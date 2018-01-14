@@ -86,9 +86,9 @@ You can provide a custom `className` to the Nice Input Password and custom `clas
 | name | string | undefined | The name used on input element `name={name}` |
 | className | string | (empty string) | Optional class to be passed to niceinputpassword context |
 | normalClassName | string | 'none' | The className used on level color
-| dangerClassName | string | 'none' | The className used on level color
-| warningClassName | string | 'none' | The className used on level color
-| successClassName | string | 'none' | The className used on level color
+| dangerClassName | string | 'danger' | The className used on level color
+| warningClassName | string | 'warning' | The className used on level color
+| successClassName | string | 'success' | The className used on level color
 | value | string | undefined | The value to be renderized on element
 | showSecurityLevelBar | bool | false | Key to show or not the security level bullets of password
 | showSecurityLevelDescription | bool | false | Key to show or not the security level description securityLevels object
