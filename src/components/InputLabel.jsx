@@ -32,6 +32,7 @@ const InputLabel = ({
     <input
       name={name}
       id={name}
+      className={className}
       value={value}
       type="password"
       placeholder={placeholder}
