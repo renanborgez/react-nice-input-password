@@ -5,6 +5,8 @@ React-Nice-Input-Password
 
 A input password control built with and for [React](http://facebook.github.io/react/index.html)
 
+[![Sample](https://image.ibb.co/ivG6rm/sample.png)](https://image.ibb.co/ivG6rm/sample.png)
+
 ## Installation
 
 The easiest way to use react-select is to install it from npm and build it into your app with Webpack.
