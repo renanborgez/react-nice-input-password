@@ -6,8 +6,7 @@
   "style": "dist/react-nice-input-password.css",
   "scripts": {
     "start": "parcel public/index.html --open",
-    "test": "export NODE_ENV=test; jest",
-    "coverage": "jest --coverage",
+    "test": "export NODE_ENV=test; jest --coverage",
     "prepublish": "jest --coverage",
     "build": "webpack --env.production"
   },
