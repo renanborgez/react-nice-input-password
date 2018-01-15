@@ -627,7 +627,7 @@ var NiceInputPassword = function (_React$Component) {
           value: target.value,
           isValid: this.state.levels.filter(function (level) {
             return level.isValid;
-          }).length > 0
+          }).length === this.state.levels.length
         });
 
         this.setState({
