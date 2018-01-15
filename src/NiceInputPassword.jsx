@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import './NiceInputPassword.scss';
 import InputLabel from './components/InputLabel';
+import { setTimeout } from 'timers';
 
 const propTypes = {
   label: PropTypes.oneOfType([
@@ -75,15 +76,15 @@ class NiceInputPassword extends React.Component {
 
   handleChange(event) {
     const { target } = event;
-
+    const levels = this.handleValidateAndGetLevels(target.value);
     this.setState({
-      levels: this.handleValidateAndGetLevels(target.value),
+      levels,
     });
 
     this.props.onChange({
       name: this.props.name,
       value: target.value,
-      isValid: this.state.levels.filter(level => level.isValid).length === this.state.levels.length,
+      isValid: levels.filter(level => level.isValid).length === levels.length,
     });
   }
 
