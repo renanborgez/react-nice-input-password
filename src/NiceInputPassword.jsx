@@ -19,10 +19,13 @@ const propTypes = {
   warningClassName: PropTypes.string,
   successClassName: PropTypes.string,
   securityLevels: PropTypes.arrayOf(PropTypes.shape({
-    descriptionLabel: PropTypes.string.isRequired,
+    descriptionLabel: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.element,
+    ]).isRequired,
     validator: PropTypes.oneOfType([
       PropTypes.func,
-      PropTypes.element,
+      PropTypes.object,
     ]).isRequired,
   })),
   onChange: PropTypes.func,
