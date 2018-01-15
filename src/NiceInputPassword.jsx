@@ -22,7 +22,7 @@ const propTypes = {
     descriptionLabel: PropTypes.string.isRequired,
     validator: PropTypes.oneOfType([
       PropTypes.func,
-      PropTypes.object,
+      PropTypes.element,
     ]).isRequired,
   })),
   onChange: PropTypes.func,
