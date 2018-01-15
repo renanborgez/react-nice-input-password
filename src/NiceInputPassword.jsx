@@ -99,35 +99,35 @@ class NiceInputPassword extends React.Component {
     let inputClassName = '';
     const levelsMarkerNode =
     this.state.levels.map((item, index) => {
-      let markclassName = '';
+      let markerClassName = '';
       const levelsLength = this.state.levels.length;
       const levelsValidLength = this.state.levels.filter(level => level.isValid).length;
 
       if (value !== '') {
         switch (true) {
         case levelsLength === levelsValidLength:
-          markclassName = successClassName;
+          markerClassName = successClassName;
           break;
 
         case levelsValidLength === 1 && index === 0:
-          markclassName = dangerClassName;
+          markerClassName = dangerClassName;
           break;
 
         case levelsValidLength > 1 && index < levelsValidLength:
-          markclassName = warningClassName;
+          markerClassName = warningClassName;
           break;
 
         default:
-          markclassName = normalClassName;
+          markerClassName = normalClassName;
           break;
         }
       }
 
       if (index === 0) {
-        inputClassName = markclassName;
+        inputClassName = markerClassName;
       }
 
-      return <div className={markclassName} key={`marker-${escape(item.descriptionLabel)}`} />;
+      return <div className={markerClassName} key={`marker-${escape(item.descriptionLabel)}`} />;
     });
 
     const levelsDescriptionNode =

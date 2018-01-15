@@ -1,6 +1,6 @@
 {
   "name": "react-nice-input-password",
-  "version": "1.0.11",
+  "version": "2.0.0",
   "description": "React input password component",
   "main": "dist/react-nice-input-password.js",
   "style": "dist/react-nice-input-password.css",
@@ -69,13 +69,13 @@
     "postcss-loader": "^2.0.10",
     "postcss-modules": "^1.1.0",
     "react-dev-utils": "^4.2.1",
-    "react-dom": "^16.2.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
     "webpack": "^3.10.0"
   },
   "dependencies": {
     "prop-types": "^15.6.0",
+    "react-dom": "^16.2.0",
     "react": "^16.2.0"
   }
 }

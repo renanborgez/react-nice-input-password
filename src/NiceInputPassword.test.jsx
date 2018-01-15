@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import ReactTestUtils from 'react-dom/test-utils';
 
 import NiceInputPassword from './NiceInputPassword';
 
@@ -271,6 +272,58 @@ describe('components', () => {
       expect(markers[1].className).toBe('yellow');
       expect(markers[2].className).toBe('yellow');
       expect(markers[3].className).toBe('gray');
+    });
+
+    it('must validate with regex validator', () => {
+      const securityLevels = [
+        {
+          descriptionLabel: 'Validate letter',
+          validator: /.*[a-zA-Z].*/,
+        },
+      ];
+      const div = document.createElement('div');
+      render(<NiceInputPassword
+        label="myLabel"
+        name="myName"
+        securityLevels={securityLevels}
+        dangerClassName="red"
+        successClassName="green"
+        warningClassName="yellow"
+        normalClassName="gray"
+        showSecurityLevelDescription
+        showSecurityLevelBar
+        value="abcd"
+      />, div);
+
+      const input = div.querySelector('#myName');
+      const markers = div.querySelectorAll('.input-password__marker div');
+      const descriptions = div.querySelectorAll('.input-password__description li');
+
+      expect(descriptions[0].className).toBe('red');
+      expect(markers[0].className).toBe('gray');
+
+      input.value = 'newValue';
+      ReactTestUtils.Simulate.change(input);
+
+      expect(descriptions[0].className).toBe('green');
+      expect(markers[0].className).toBe('green');
+    });
+
+    it('calls onChange handler', () => {
+      const onChange = jest.fn();
+      const div = document.createElement('div');
+      render(<NiceInputPassword
+        label="myLabel"
+        name="myName"
+        value=""
+        onChange={onChange}
+      />, div);
+
+      const input = div.querySelector('#myName');
+      input.value = 'newValue';
+      ReactTestUtils.Simulate.change(input);
+
+      expect(onChange).toHaveBeenCalled();
     });
   });
 });

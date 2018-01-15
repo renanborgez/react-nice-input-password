@@ -36,7 +36,7 @@ describe('components', () => {
       expect(input.placeholder).toBe('myPlaceholder');
     });
 
-    it('calls onChange and returns data', () => {
+    it('calls onChange handler', () => {
       const onChange = jest.fn();
       const elementName = 'myInput';
 
