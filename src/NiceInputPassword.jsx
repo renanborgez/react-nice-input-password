@@ -75,14 +75,15 @@ class NiceInputPassword extends React.Component {
 
   handleChange(event) {
     const { target } = event;
+
+    this.setState({
+      levels: this.handleValidateAndGetLevels(target.value),
+    });
+
     this.props.onChange({
       name: this.props.name,
       value: target.value,
       isValid: this.state.levels.filter(level => level.isValid).length === this.state.levels.length,
-    });
-
-    this.setState({
-      levels: this.handleValidateAndGetLevels(target.value),
     });
   }
 

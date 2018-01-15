@@ -622,16 +622,17 @@ var NiceInputPassword = function (_React$Component) {
       function handleChange(event) {
         var target = event.target;
 
+
+        this.setState({
+          levels: this.handleValidateAndGetLevels(target.value)
+        });
+
         this.props.onChange({
           name: this.props.name,
           value: target.value,
           isValid: this.state.levels.filter(function (level) {
             return level.isValid;
           }).length === this.state.levels.length
-        });
-
-        this.setState({
-          levels: this.handleValidateAndGetLevels(target.value)
         });
       }
 
