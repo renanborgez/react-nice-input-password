@@ -78,6 +78,7 @@ class NiceInputPassword extends React.Component {
     this.props.onChange({
       name: this.props.name,
       value: target.value,
+      isValid: this.state.levels.filter(level => level.isValid).length > 0,
     });
 
     this.setState({

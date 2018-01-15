@@ -309,13 +309,19 @@ describe('components', () => {
       expect(markers[0].className).toBe('green');
     });
 
-    it('calls onChange handler', () => {
+    it('calls onChange handler and return valid', () => {
       const onChange = jest.fn();
       const div = document.createElement('div');
       render(<NiceInputPassword
         label="myLabel"
         name="myName"
-        value=""
+        value="a"
+        securityLevels={[
+          {
+            descriptionLabel: 'Sample 1',
+            validator: () => true,
+          },
+        ]}
         onChange={onChange}
       />, div);
 
@@ -324,6 +330,31 @@ describe('components', () => {
       ReactTestUtils.Simulate.change(input);
 
       expect(onChange).toHaveBeenCalled();
+      expect(onChange.mock.calls[0][0].isValid).toBe(true);
+    });
+
+    it('calls onChange handler and return not valid', () => {
+      const onChange = jest.fn();
+      const div = document.createElement('div');
+      render(<NiceInputPassword
+        label="myLabel"
+        name="myName"
+        value="a"
+        securityLevels={[
+          {
+            descriptionLabel: 'Sample 1',
+            validator: () => false,
+          },
+        ]}
+        onChange={onChange}
+      />, div);
+
+      const input = div.querySelector('#myName');
+      input.value = 'newValue';
+      ReactTestUtils.Simulate.change(input);
+
+      expect(onChange).toHaveBeenCalled();
+      expect(onChange.mock.calls[0][0].isValid).toBe(false);
     });
   });
 });
