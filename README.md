@@ -53,7 +53,7 @@ class App extends React.Component {
         label="My password field"
         name="passwordField"
         value={value}
-        securityLebels={[
+        securityLevels={[
         {
           descriptionLabel: 'At least 1 number',
           validator: /.*[0-9].*/,
@@ -67,6 +67,8 @@ class App extends React.Component {
           validator: /.*[A-Z].*/,
         },
         ]}
+        showSecurityLevelBar
+        showSecurityLevelDescription
         onChange={this.handleChange}
       />
     );
