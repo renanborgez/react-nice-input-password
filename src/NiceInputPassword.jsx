@@ -21,6 +21,7 @@ const propTypes = {
   securityLevels: PropTypes.arrayOf(PropTypes.shape({
     descriptionLabel: PropTypes.oneOfType([
       PropTypes.string,
+      PropTypes.object,
       PropTypes.element,
     ]).isRequired,
     validator: PropTypes.oneOfType([
