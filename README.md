@@ -1,7 +1,8 @@
 [![Build Status](https://travis-ci.org/renanborgez/react-nice-input-password.svg?branch=master)](https://travis-ci.org/renanborgez/react-nice-input-password)
 [![Coverage Status](https://coveralls.io/repos/renanborgez/react-nice-input-password/badge.svg?branch=master&service=github)](https://coveralls.io/github/renanborgez/react-nice-input-password?branch=master)
-React-Nice-Input-Password
-============
+
+# React-Nice-Input-Password
+
 
 A input password control built with and for [React](http://facebook.github.io/react/index.html)
 
