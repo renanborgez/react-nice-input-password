@@ -554,7 +554,7 @@ var propTypes = {
   warningClassName: _propTypes2['default'].string,
   successClassName: _propTypes2['default'].string,
   securityLevels: _propTypes2['default'].arrayOf(_propTypes2['default'].shape({
-    descriptionLabel: _propTypes2['default'].string.isRequired,
+    descriptionLabel: _propTypes2['default'].oneOfType([_propTypes2['default'].string, _propTypes2['default'].object, _propTypes2['default'].element]).isRequired,
     validator: _propTypes2['default'].oneOfType([_propTypes2['default'].func, _propTypes2['default'].object]).isRequired
   })),
   onChange: _propTypes2['default'].func
@@ -624,7 +624,10 @@ var NiceInputPassword = function (_React$Component) {
 
         this.props.onChange({
           name: this.props.name,
-          value: target.value
+          value: target.value,
+          isValid: this.state.levels.filter(function (level) {
+            return level.isValid;
+          }).length > 0
         });
 
         this.setState({
@@ -656,7 +659,7 @@ var NiceInputPassword = function (_React$Component) {
 
         var inputClassName = '';
         var levelsMarkerNode = this.state.levels.map(function (item, index) {
-          var markclassName = '';
+          var markerClassName = '';
           var levelsLength = _this2.state.levels.length;
           var levelsValidLength = _this2.state.levels.filter(function (level) {
             return level.isValid;
@@ -665,28 +668,28 @@ var NiceInputPassword = function (_React$Component) {
           if (value !== '') {
             switch (true) {
               case levelsLength === levelsValidLength:
-                markclassName = successClassName;
+                markerClassName = successClassName;
                 break;
 
               case levelsValidLength === 1 && index === 0:
-                markclassName = dangerClassName;
+                markerClassName = dangerClassName;
                 break;
 
               case levelsValidLength > 1 && index < levelsValidLength:
-                markclassName = warningClassName;
+                markerClassName = warningClassName;
                 break;
 
               default:
-                markclassName = normalClassName;
+                markerClassName = normalClassName;
                 break;
             }
           }
 
           if (index === 0) {
-            inputClassName = markclassName;
+            inputClassName = markerClassName;
           }
 
-          return _react2['default'].createElement('div', { className: markclassName, key: 'marker-' + escape(item.descriptionLabel) });
+          return _react2['default'].createElement('div', { className: markerClassName, key: 'marker-' + escape(item.descriptionLabel) });
         });
 
         var levelsDescriptionNode = this.state.levels.map(function (item) {
@@ -1580,6 +1583,7 @@ var InputLabel = function () {
       _react2['default'].createElement('input', {
         name: name,
         id: name,
+        className: className,
         value: value,
         type: 'password',
         placeholder: placeholder,
