@@ -6,6 +6,9 @@
 
 A input password control built with and for [React](http://facebook.github.io/react/index.html)
 
+## Demo
+[https://codesandbox.io/s/o1v16rqqrz](https://codesandbox.io/s/o1v16rqqrz)
+
 [![Sample](https://image.ibb.co/dJNFHR/sample.png)](https://image.ibb.co/dJNFHR/sample.png)
 
 ## Installation
