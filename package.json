@@ -31,6 +31,10 @@
     "email": "me@renan.ninja",
     "url": "http://renan.ninja"
   },
+  "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/renanborgez/react-nice-input-password/issues"
