@@ -36,6 +36,7 @@ const propTypes = {
 const defaultProps = {
   value: '',
   className: '',
+  placeholder: '',
   showSecurityLevelBar: false,
   showSecurityLevelDescription: false,
   securityLevels: [],

@@ -89,7 +89,7 @@ You can provide a custom `className` to the Nice Input Password and custom `clas
 |:---|:---|:---|:---|
 | label | string or function | undefined | The label showned on top of input element |
 | name | string | undefined | The name used on input element `name={name}` |
-| placeholder | string | undefined | The placeholder used on input element `placeholder={placeholder}` |
+| placeholder | string | (empty string) | The placeholder used on input element `placeholder={placeholder}` |
 | className | string | (empty string) | Optional class to be passed to niceinputpassword context |
 | normalClassName | string | 'none' | The className used on level color
 | dangerClassName | string | 'danger' | The className used on level color
