@@ -99,7 +99,7 @@ You can provide a custom `className` to the Nice Input Password and custom `clas
 | showSecurityLevelBar | bool | false | Key to show or not the security level bullets of password
 | showSecurityLevelDescription | bool | false | Key to show or not the security level description securityLevels object
 | securityLevels | array of objects | [] | The array containing the objects to validate the password, see a sample of this object on after this table
-| onChange | func | undefined | onChange handler: `function(newOption) {} - Ill receiv a object with { name, value, isValid}`
+| onChange | func | undefined | onChange handler: `@params: { name, value, isValid}`
 
 ## License
 
