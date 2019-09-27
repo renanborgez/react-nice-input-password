@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import './NiceInputPassword.scss';
 import InputLabel from './components/InputLabel';
-import { setTimeout } from 'timers';
 
 const propTypes = {
   label: PropTypes.oneOfType([
@@ -18,6 +17,7 @@ const propTypes = {
   normalClassName: PropTypes.string,
   dangerClassName: PropTypes.string,
   warningClassName: PropTypes.string,
+  placeholder: PropTypes.string,
   successClassName: PropTypes.string,
   securityLevels: PropTypes.arrayOf(PropTypes.shape({
     descriptionLabel: PropTypes.oneOfType([
@@ -101,6 +101,7 @@ class NiceInputPassword extends React.Component {
       successClassName,
       className,
       value,
+      placeholder,
     } = this.props;
 
     let inputClassName = '';
@@ -159,6 +160,7 @@ class NiceInputPassword extends React.Component {
         <InputLabel
           label={label}
           name={name}
+          placeholder={placeholder}
           className={inputClassName}
           value={value}
           onChange={this.handleChange}

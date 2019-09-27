@@ -45,6 +45,7 @@ class App extends React.Component {
         <NiceInputPassword
           label="Password"
           name="pass1"
+          placeholder="Type your password here"
           value={this.state.pass1}
           onChange={this.handleChange}
         />
