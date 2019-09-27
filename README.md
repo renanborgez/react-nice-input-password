@@ -1,19 +1,19 @@
-[![Build Status](https://travis-ci.org/renanborgez/react-nice-input-password.svg?branch=master)](https://travis-ci.org/renanborgez/react-nice-input-password)
-[![Coverage Status](https://coveralls.io/repos/github/renanborgez/react-nice-input-password/badge.svg?branch=master)](https://coveralls.io/github/renanborgez/react-nice-input-password?branch=master)
-
 # React-Nice-Input-Password
 
+[![Build Status](https://travis-ci.org/renanborgez/react-nice-input-password.svg?branch=master)](https://travis-ci.org/renanborgez/react-nice-input-password)
+[![Coverage Status](https://coveralls.io/repos/github/renanborgez/react-nice-input-password/badge.svg?branch=master)](https://coveralls.io/github/renanborgez/react-nice-input-password?branch=master)
 
 A input password control built with and for [React](http://facebook.github.io/react/index.html)
 
 ## Demo
+
 [https://codesandbox.io/s/o1v16rqqrz](https://codesandbox.io/s/o1v16rqqrz)
 
 [![Sample](https://image.ibb.co/dJNFHR/sample.png)](https://image.ibb.co/dJNFHR/sample.png)
 
 ## Installation
 
-The easiest way to use react-select is to install it from npm and build it into your app with Webpack.
+The easiest way to use react-nice-input-password is to install it from npm and build it into your app with Webpack.
 
 ```js
 npm install react-nice-input-password --save
@@ -83,7 +83,6 @@ class App extends React.Component {
 
 You can provide a custom `className` to the Nice Input Password and custom `className` to the color levels, which will be added to input, description and bullets level elements using `dangerClassName`, `warningClassName` and `successClassName`.
 
-
 ### Select Props
 
 | Property | Type | Default | Description |
@@ -101,8 +100,6 @@ You can provide a custom `className` to the Nice Input Password and custom `clas
 | securityLevels | array of objects | [] | The array containing the objects to validate the password, see a sample of this object on after this table
 | onChange | func | undefined | onChange handler: `function(newOption) {} - Ill receiv a object with { name, value, isValid}`
 
-
-
-# License
+## License
 
 MIT Licensed. Copyright (c) Renan Borges 2018.
