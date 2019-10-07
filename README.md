@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/renanborgez/react-nice-input-password.svg?branch=master)](https://travis-ci.org/renanborgez/react-nice-input-password)
 [![Coverage Status](https://coveralls.io/repos/github/renanborgez/react-nice-input-password/badge.svg?branch=master)](https://coveralls.io/github/renanborgez/react-nice-input-password?branch=master)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frenanborgez%2Freact-nice-input-password.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Frenanborgez%2Freact-nice-input-password?ref=badge_shield)
 
 A input password control built with and for [React](http://facebook.github.io/react/index.html)
 
@@ -104,3 +105,6 @@ You can provide a custom `className` to the Nice Input Password and custom `clas
 ## License
 
 MIT Licensed. Copyright (c) Renan Borges 2018.
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frenanborgez%2Freact-nice-input-password.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Frenanborgez%2Freact-nice-input-password?ref=badge_large)
