@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/renanborgez/react-nice-input-password.svg?branch=master)](https://travis-ci.org/renanborgez/react-nice-input-password)
 [![Coverage Status](https://coveralls.io/repos/github/renanborgez/react-nice-input-password/badge.svg?branch=master)](https://coveralls.io/github/renanborgez/react-nice-input-password?branch=master)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frenanborgez%2Freact-nice-input-password.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Frenanborgez%2Freact-nice-input-password?ref=badge_shield)[![Known Vulnerabilities](https://snyk.io//test/github/renanborgez/react-nice-input-password/badge.svg?targetFile=package.json)](https://snyk.io//test/github/renanborgez/react-nice-input-password?targetFile=package.json)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frenanborgez%2Freact-nice-input-password.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Frenanborgez%2Freact-nice-input-password?ref=badge_shield) [![Known Vulnerabilities](https://snyk.io//test/github/renanborgez/react-nice-input-password/badge.svg?targetFile=package.json)](https://snyk.io//test/github/renanborgez/react-nice-input-password?targetFile=package.json)
 
 A input password control built with and for [React](http://facebook.github.io/react/index.html)
 
