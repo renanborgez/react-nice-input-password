@@ -1,14 +1,11 @@
 // eslint-disable-next-line no-unused-vars
 const webpack = require('webpack');
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-const extractSass = new ExtractTextPlugin({
-  filename: 'react-nice-input-password.css',
-});
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './src',
+  mode: 'production',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'react-nice-input-password.js',
@@ -28,25 +25,30 @@ module.exports = {
     'react-dom': 'commonjs react-dom',
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx$/,
-        loaders: 'babel-loader',
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
       },
       {
         test: /\.scss$/,
-        use: extractSass.extract({
-          use: [{
-            loader: 'css-loader',
-          }, {
-            loader: 'sass-loader',
-          }],
-          fallback: 'style-loader',
-        }),
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
       },
     ],
   },
   plugins: [
-    extractSass,
+    new MiniCssExtractPlugin({
+      filename: 'react-nice-input-password.css',
+    }),
   ],
 };
