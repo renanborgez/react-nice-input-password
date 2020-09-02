@@ -1,10 +1,14 @@
 {
-  "presets": ["env", "react", "airbnb", "es2015"],
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ],
   "env": {
     "test": {
-      "plugins": ["import-noop"]
+      "plugins": [
+        "import-noop"
+      ]
     },
-    "production": {
-    }
+    "production": {}
   }
 }
