@@ -92,10 +92,13 @@ You can provide a custom `className` to the Nice Input Password and custom `clas
 | name | string | undefined | The name used on input element `name={name}` |
 | placeholder | string | (empty string) | The placeholder used on input element `placeholder={placeholder}` |
 | className | string | (empty string) | Optional class to be passed to niceinputpassword context |
+| style | object | undefined | Optional style to be passed to input field |
 | normalClassName | string | 'none' | The className used on level color
 | dangerClassName | string | 'danger' | The className used on level color
 | warningClassName | string | 'warning' | The className used on level color
 | successClassName | string | 'success' | The className used on level color
+| startAdornment | ReactNode | undefined | Start adornment for this component
+| endAdornment | ReactNode | undefined | End adornment for this component
 | value | string | undefined | The value to be renderized on element
 | showSecurityLevelBar | bool | false | Key to show or not the security level bullets of password
 | showSecurityLevelDescription | bool | false | Key to show or not the security level description securityLevels object
@@ -104,7 +107,7 @@ You can provide a custom `className` to the Nice Input Password and custom `clas
 
 ## License
 
-MIT Licensed. Copyright (c) Renan Borges 2018.
+MIT Licensed. Copyright (c) Renan Borges.
 
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frenanborgez%2Freact-nice-input-password.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Frenanborgez%2Freact-nice-input-password?ref=badge_large)
