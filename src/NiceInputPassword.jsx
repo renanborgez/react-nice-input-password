@@ -11,7 +11,10 @@ const propTypes = {
   ]).isRequired,
   name: PropTypes.string.isRequired,
   className: PropTypes.string,
+  style: PropTypes.object,
   value: PropTypes.string,
+  startAdornment: PropTypes.node,
+  endAdornment: PropTypes.node,
   showSecurityLevelBar: PropTypes.bool,
   showSecurityLevelDescription: PropTypes.bool,
   normalClassName: PropTypes.string,
@@ -37,6 +40,7 @@ const defaultProps = {
   value: '',
   className: '',
   placeholder: '',
+  style: null,
   showSecurityLevelBar: false,
   showSecurityLevelDescription: false,
   securityLevels: [],
@@ -45,6 +49,8 @@ const defaultProps = {
   warningClassName: 'warning',
   successClassName: 'success',
   onChange: () => {},
+  startAdornment: null,
+  endAdornment: null,
 };
 
 class NiceInputPassword extends React.Component {
@@ -103,6 +109,9 @@ class NiceInputPassword extends React.Component {
       className,
       value,
       placeholder,
+      startAdornment,
+      endAdornment,
+      style,
     } = this.props;
 
     let inputClassName = '';
@@ -164,6 +173,9 @@ class NiceInputPassword extends React.Component {
           placeholder={placeholder}
           className={inputClassName}
           value={value}
+          style={style}
+          startAdornment={startAdornment}
+          endAdornment={endAdornment}
           onChange={this.handleChange}
         />
         {securityLevels && securityLevels.length > 0 ? (

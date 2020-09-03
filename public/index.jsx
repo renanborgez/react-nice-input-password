@@ -73,6 +73,21 @@ class App extends React.Component {
           onChange={this.handleChange}
         />
         <hr />
+
+        <h2>With start and end adornment</h2>
+        <NiceInputPassword
+          label="Password"
+          name="pass4"
+          showSecurityLevelBar
+          showSecurityLevelDescription
+          securityLevels={securityLevels}
+          value={this.state.pass4}
+          onChange={this.handleChange}
+          style={{ paddingLeft: 15 }}
+          startAdornment={<div style={{ position: 'absolute', top: 2, left: 5 }}>Ξ</div>}
+          endAdornment="OK"
+        />
+        <hr />
       </div>
     );
   }

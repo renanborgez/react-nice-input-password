@@ -24,16 +24,22 @@ describe('components', () => {
         placeholder="myPlaceholder"
         onChange={() => {}}
         value="myValue"
+        startAdornment={<div className="start-adorn">A</div>}
+        endAdornment={<div className="end-adorn">B</div>}
       />, div);
 
       const input = div.querySelector('#myName');
       const label = div.querySelector('label');
+      const startAdornment = div.querySelector('.start-adorn');
+      const endAdornment = div.querySelector('.end-adorn');
 
-      expect(label.textContent).toBe('myLabel');
+      expect(label.textContent).toContain('myLabel');
       expect(label.htmlFor).toBe('myName');
       expect(input.name).toBe('myName');
       expect(input.value).toBe('myValue');
       expect(input.placeholder).toBe('myPlaceholder');
+      expect(startAdornment.textContent).toBe('A');
+      expect(endAdornment.textContent).toBe('B');
     });
 
     it('calls onChange handler', () => {
