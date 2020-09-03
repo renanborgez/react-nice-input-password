@@ -51,10 +51,11 @@ class App extends React.Component {
         />
         <hr />
 
-        <h2>With levelbar</h2>
+        <h2>With levelbar and visible text</h2>
         <NiceInputPassword
           label="Password"
           name="pass2"
+          visible
           showSecurityLevelBar
           securityLevels={securityLevels}
           value={this.state.pass2}

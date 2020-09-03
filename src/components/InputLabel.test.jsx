@@ -10,10 +10,24 @@ describe('components', () => {
       const div = document.createElement('div');
       render(<InputLabel
         label="myLabel"
-        name=""
+        name="myName"
         onChange={() => {}}
         value=""
       />, div);
+    });
+
+    it('renders the password as visible text', () => {
+      const div = document.createElement('div');
+      render(<InputLabel
+        label="myLabel"
+        name="myName"
+        visible
+        onChange={() => {}}
+        value=""
+      />, div);
+
+      const input = div.querySelector('#myName');
+      expect(input.getAttribute('type')).toBe('text');
     });
 
     it('renders with the right properties', () => {
