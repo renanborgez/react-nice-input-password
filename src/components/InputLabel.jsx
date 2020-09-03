@@ -14,6 +14,7 @@ const propTypes = {
   onChange: PropTypes.func.isRequired,
   startAdornment: PropTypes.node,
   endAdornment: PropTypes.node,
+  visible: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -23,6 +24,7 @@ const defaultProps = {
   style: null,
   startAdornment: null,
   endAdornment: null,
+  visible: false,
 };
 
 const InputLabel = ({
@@ -34,6 +36,7 @@ const InputLabel = ({
   startAdornment,
   endAdornment,
   style,
+  visible,
   onChange,
 }) => (
   <label htmlFor={name} className={className}>
@@ -45,7 +48,7 @@ const InputLabel = ({
         id={name}
         className={className}
         value={value}
-        type="password"
+        type={visible ? 'text' : 'password'}
         style={style}
         placeholder={placeholder}
         onChange={onChange}

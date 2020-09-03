@@ -13,6 +13,7 @@ const propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
   value: PropTypes.string,
+  visible: PropTypes.bool,
   startAdornment: PropTypes.node,
   endAdornment: PropTypes.node,
   showSecurityLevelBar: PropTypes.bool,
@@ -44,6 +45,7 @@ const defaultProps = {
   showSecurityLevelBar: false,
   showSecurityLevelDescription: false,
   securityLevels: [],
+  visible: false,
   normalClassName: 'none',
   dangerClassName: 'danger',
   warningClassName: 'warning',
@@ -112,6 +114,7 @@ class NiceInputPassword extends React.Component {
       startAdornment,
       endAdornment,
       style,
+      visible,
     } = this.props;
 
     let inputClassName = '';
@@ -175,6 +178,7 @@ class NiceInputPassword extends React.Component {
           value={value}
           style={style}
           startAdornment={startAdornment}
+          visible={visible}
           endAdornment={endAdornment}
           onChange={this.handleChange}
         />

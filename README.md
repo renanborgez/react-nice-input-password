@@ -90,6 +90,7 @@ You can provide a custom `className` to the Nice Input Password and custom `clas
 |:---|:---|:---|:---|
 | label | string or function | undefined | The label showned on top of input element |
 | name | string | undefined | The name used on input element `name={name}` |
+| visible | boolean | false | Make the password visible by changing the input type to text |
 | placeholder | string | (empty string) | The placeholder used on input element `placeholder={placeholder}` |
 | className | string | (empty string) | Optional class to be passed to niceinputpassword context |
 | style | object | undefined | Optional style to be passed to input field |
