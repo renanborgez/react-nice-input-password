@@ -15,6 +15,9 @@ const propTypes = {
   startAdornment: PropTypes.node,
   endAdornment: PropTypes.node,
   visible: PropTypes.bool,
+  LabelComponent: PropTypes.any,
+  InputComponent: PropTypes.any,
+  InputComponentProps: PropTypes.object,
 };
 
 const defaultProps = {
@@ -25,6 +28,9 @@ const defaultProps = {
   startAdornment: null,
   endAdornment: null,
   visible: false,
+  LabelComponent: args => React.createElement('label', args),
+  InputComponent: args => React.createElement('input', args),
+  InputComponentProps: {},
 };
 
 const InputLabel = ({
@@ -38,12 +44,15 @@ const InputLabel = ({
   style,
   visible,
   onChange,
+  LabelComponent,
+  InputComponent,
+  InputComponentProps,
 }) => (
-  <label htmlFor={name} className={className}>
+  <LabelComponent htmlFor={name} className={className}>
     {label}
     <div className="input-password__field">
       {startAdornment && <div className="input-password__startAdornment">{startAdornment}</div>}
-      <input
+      <InputComponent
         name={name}
         id={name}
         className={className}
@@ -52,10 +61,11 @@ const InputLabel = ({
         style={style}
         placeholder={placeholder}
         onChange={onChange}
+        {...InputComponentProps}
       />
       {endAdornment && <div className="input-password__endAdornment">{endAdornment}</div>}
     </div>
-  </label>
+  </LabelComponent>
 );
 
 InputLabel.propTypes = propTypes;

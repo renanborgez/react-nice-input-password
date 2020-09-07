@@ -1,5 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import TextField from '@material-ui/core/TextField';
+import InputLabel from '@material-ui/core/InputLabel';
+import Typography from '@material-ui/core/Typography';
+import LockIcon from '@material-ui/icons/Lock';
 
 import './index.scss';
 
@@ -23,25 +27,25 @@ class App extends React.Component {
   render() {
     const securityLevels = [
       {
-        descriptionLabel: 'At least 1 number',
+        descriptionLabel: <Typography>At least 1 number</Typography>,
         validator: /.*[0-9].*/,
       },
       {
-        descriptionLabel: 'At least 1 letter',
+        descriptionLabel: <Typography>At least 1 letter</Typography>,
         validator: /.*[a-zA-Z].*/,
       },
       {
-        descriptionLabel: 'At least 1 uppercase letter',
+        descriptionLabel: <Typography>At least 1 uppercase letter</Typography>,
         validator: /.*[A-Z].*/,
       },
       {
-        descriptionLabel: 'At least 1 L letter',
+        descriptionLabel: <Typography>At least 1 L letter</Typography>,
         validator: /.*[L].*/,
       },
     ];
     return (
       <div className="wrap">
-        <h2>Simple input</h2>
+        <Typography variant="h5">Simple input</Typography>
         <NiceInputPassword
           label="Password"
           name="pass1"
@@ -51,7 +55,7 @@ class App extends React.Component {
         />
         <hr />
 
-        <h2>With levelbar and visible text</h2>
+        <Typography variant="h5">With levelbar and visible text</Typography>
         <NiceInputPassword
           label="Password"
           name="pass2"
@@ -63,7 +67,7 @@ class App extends React.Component {
         />
         <hr />
 
-        <h2>With levelbar and descritionLevelBar</h2>
+        <Typography variant="h5">With levelbar and descritionLevelBar</Typography>
         <NiceInputPassword
           label="Password"
           name="pass3"
@@ -75,7 +79,7 @@ class App extends React.Component {
         />
         <hr />
 
-        <h2>With start and end adornment</h2>
+        <Typography variant="h5">With start and end adornment</Typography>
         <NiceInputPassword
           label="Password"
           name="pass4"
@@ -87,6 +91,25 @@ class App extends React.Component {
           style={{ paddingLeft: 15 }}
           startAdornment={<div style={{ position: 'absolute', top: 2, left: 5 }}>Ξ</div>}
           endAdornment="OK"
+        />
+        <hr />
+
+        <Typography variant="h5">Using Material-UI InputLabel and TextField</Typography>
+        <NiceInputPassword
+          label="Password"
+          name="pass5"
+          LabelComponent={InputLabel}
+          InputComponent={TextField}
+          InputComponentProps={{
+            variant: 'outlined',
+            InputProps: {
+              endAdornment: <LockIcon />,
+            },
+          }}
+          value={this.state.pass5}
+          showSecurityLevelBar
+          securityLevels={securityLevels}
+          onChange={this.handleChange}
         />
         <hr />
       </div>
