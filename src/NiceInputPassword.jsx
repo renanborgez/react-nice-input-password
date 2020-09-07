@@ -14,6 +14,9 @@ const propTypes = {
   style: PropTypes.object,
   value: PropTypes.string,
   visible: PropTypes.bool,
+  LabelComponent: PropTypes.any,
+  InputComponent: PropTypes.any,
+  InputComponentProps: PropTypes.object,
   startAdornment: PropTypes.node,
   endAdornment: PropTypes.node,
   showSecurityLevelBar: PropTypes.bool,
@@ -46,6 +49,9 @@ const defaultProps = {
   showSecurityLevelDescription: false,
   securityLevels: [],
   visible: false,
+  LabelComponent: args => React.createElement('label', args),
+  InputComponent: args => React.createElement('input', args),
+  InputComponentProps: {},
   normalClassName: 'none',
   dangerClassName: 'danger',
   warningClassName: 'warning',
@@ -115,6 +121,9 @@ class NiceInputPassword extends React.Component {
       endAdornment,
       style,
       visible,
+      LabelComponent,
+      InputComponent,
+      InputComponentProps,
     } = this.props;
 
     let inputClassName = '';
@@ -148,11 +157,13 @@ class NiceInputPassword extends React.Component {
         inputClassName = markerClassName;
       }
 
-      return <div className={markerClassName} key={`marker-${escape(item.descriptionLabel)}`} />;
+      return (
+        <div className={markerClassName} key={`marker-${escape(item.descriptionLabel)}-${index}`} />
+      );
     });
 
     const levelsDescriptionNode =
-      this.state.levels.map((item) => {
+      this.state.levels.map((item, index) => {
         let descriptionClassName = '';
 
         if (item.isValid && value !== '') {
@@ -162,7 +173,10 @@ class NiceInputPassword extends React.Component {
         }
 
         return (
-          <li className={descriptionClassName} key={escape(item.descriptionLabel)}>
+          <li
+            className={descriptionClassName}
+            key={`description-node-${escape(item.descriptionLabel)}-${index}`}
+          >
             {item.descriptionLabel}
           </li>
         );
@@ -181,6 +195,9 @@ class NiceInputPassword extends React.Component {
           visible={visible}
           endAdornment={endAdornment}
           onChange={this.handleChange}
+          LabelComponent={LabelComponent}
+          InputComponent={InputComponent}
+          InputComponentProps={InputComponentProps}
         />
         {securityLevels && securityLevels.length > 0 ? (
           <div className="input-password__level">

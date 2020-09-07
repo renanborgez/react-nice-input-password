@@ -30,6 +30,24 @@ describe('components', () => {
       expect(input.getAttribute('type')).toBe('text');
     });
 
+    it('renders with custom component and properties', () => {
+      const div = document.createElement('div');
+      render(<InputLabel
+        label="myLabel"
+        name="myName"
+        visible
+        onChange={() => {}}
+        InputComponent={props => <input {...props} />}
+        InputComponentProps={{
+          id: 'overrided-id',
+        }}
+        value=""
+      />, div);
+
+      const input = div.querySelector('#overrided-id');
+      expect(input.getAttribute('type')).toBe('text');
+    });
+
     it('renders with the right properties', () => {
       const div = document.createElement('div');
       render(<InputLabel

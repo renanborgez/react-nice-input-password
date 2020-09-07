@@ -5,12 +5,17 @@
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frenanborgez%2Freact-nice-input-password.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Frenanborgez%2Freact-nice-input-password?ref=badge_shield) [![Known Vulnerabilities](https://snyk.io//test/github/renanborgez/react-nice-input-password/badge.svg?targetFile=package.json)](https://snyk.io//test/github/renanborgez/react-nice-input-password?targetFile=package.json)
 
 A input password control built with and for [React](http://facebook.github.io/react/index.html)
+and works nicely with [Material-UI](https://material-ui.com/)
 
 ## Demo
 
 [https://codesandbox.io/s/o1v16rqqrz](https://codesandbox.io/s/o1v16rqqrz)
 
-[![Sample](https://image.ibb.co/dJNFHR/sample.png)](https://image.ibb.co/dJNFHR/sample.png)
+### Material UI Support
+[![MaterialUI](docs/material.png)](docs/material.png)
+
+### And more ...
+[![Sample](docs/andmore.png)](docs/andmore.png)
 
 ## Installation
 
@@ -94,6 +99,7 @@ You can provide a custom `className` to the Nice Input Password and custom `clas
 | placeholder | string | (empty string) | The placeholder used on input element `placeholder={placeholder}` |
 | className | string | (empty string) | Optional class to be passed to niceinputpassword context |
 | style | object | undefined | Optional style to be passed to input field |
+| Component | ReactComponent | input | Optional component to be used
 | normalClassName | string | 'none' | The className used on level color
 | dangerClassName | string | 'danger' | The className used on level color
 | warningClassName | string | 'warning' | The className used on level color

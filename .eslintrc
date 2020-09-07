@@ -13,8 +13,8 @@
     "jest"
   ],
   "globals": {
-      "document": true,
-      "navigator": true
+    "document": true,
+    "navigator": true
   },
   "rules": {
     "indent": [
@@ -34,11 +34,13 @@
       "always"
     ],
     "import/no-extraneous-dependencies": [
-      "error", {
+      "error",
+      {
         "peerDependencies": true
       }
     ],
     "import/no-named-as-default": "off",
-    "react/forbid-prop-types": "off"
+    "react/forbid-prop-types": "off",
+    "react/no-array-index-key": "off"
   }
 }
