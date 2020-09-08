@@ -158,7 +158,7 @@ class NiceInputPassword extends React.Component {
       }
 
       return (
-        <div className={markerClassName} key={`marker-${escape(item.descriptionLabel)}-${index}`} />
+        <div className={markerClassName} key={`marker-${index}`} />
       );
     });
 
@@ -175,7 +175,7 @@ class NiceInputPassword extends React.Component {
         return (
           <li
             className={descriptionClassName}
-            key={`description-node-${escape(item.descriptionLabel)}-${index}`}
+            key={`description-node-${index}`}
           >
             {item.descriptionLabel}
           </li>
