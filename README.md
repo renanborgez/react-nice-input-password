@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/renanborgez/react-nice-input-password/badge.svg?branch=master)](https://coveralls.io/github/renanborgez/react-nice-input-password?branch=master)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frenanborgez%2Freact-nice-input-password.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Frenanborgez%2Freact-nice-input-password?ref=badge_shield) [![Known Vulnerabilities](https://snyk.io//test/github/renanborgez/react-nice-input-password/badge.svg?targetFile=package.json)](https://snyk.io//test/github/renanborgez/react-nice-input-password?targetFile=package.json)
 
-A input password control built with and for [React](http://facebook.github.io/react/index.html)
+An input password built with and for [React](http://facebook.github.io/react/index.html)
 and works nicely with [Material-UI](https://material-ui.com/)
 
 ## Demo
@@ -19,24 +19,19 @@ and works nicely with [Material-UI](https://material-ui.com/)
 
 ## Installation
 
-The easiest way to use react-nice-input-password is to install it from npm and build it into your app with Webpack.
-
-```js
+```
 npm install react-nice-input-password --save
 ```
 
-You can then import react-nice-input-password and its styles in your application as follows:
+## Usage
 
 ```js
 import NiceInputPassword from 'react-nice-input-password';
 import 'react-nice-input-password/dist/react-nice-input-password.css';
 ```
 
-## Usage
-
-React-Nice-Input-Password uses the traditional input[type=password] behinde the cenes, but you can now validate the strenght level of this value and show it to your users.
-
-The strenght can be passed as a `array` of `objects` to a prop of the component called `securityLevels`.
+React-Nice-Input-Password uses the traditional input[type=password] behinde the cenes.
+The strenght configuration can be passed as an `array` of `objects` to the prop `securityLevels`.
 
 You can see a sample of code bellow:
 
@@ -51,7 +46,6 @@ class App extends React.Component {
     this.setState({
       [data.name]: data.value,
     });
-    console.log(`Value: ${passwordField.value}`);
   }
   render() {
     const { passwordField } = this.state;
@@ -63,22 +57,76 @@ class App extends React.Component {
         name="passwordField"
         value={value}
         securityLevels={[
-        {
-          descriptionLabel: 'At least 1 number',
-          validator: /.*[0-9].*/,
-        },
-        {
-          descriptionLabel: 'At least 1 letter',
-          validator: /.*[a-zA-Z].*/,
-        },
-        {
-          descriptionLabel: 'At least 1 uppercase letter',
-          validator: /.*[A-Z].*/,
-        },
+          {
+            descriptionLabel: '1 number',
+            validator: /.*[0-9].*/,
+          },
+          {
+            descriptionLabel: '1 lowercase letter',
+            validator: /.*[a-z].*/,
+          },
+          {
+            descriptionLabel: '1 uppercase letter',
+            validator: /.*[A-Z].*/,
+          },
         ]}
         showSecurityLevelBar
         showSecurityLevelDescription
         onChange={this.handleChange}
+      />
+    );
+  }
+}
+```
+
+### Usage with Material-UI
+
+```js
+import React from 'react';
+import NiceInputPassword from 'react-nice-input-password';
+import {TextField, InputLabel, Typography} from '@material-ui/core';
+import LockIcon from '@material-ui/icons/Lock';
+
+class App extends React.Component {
+  state = {}
+  handleChange = (data) => {
+    this.setState({
+      [data.name]: data.value,
+    });
+  }
+  render() {
+    const { passwordField } = this.state;
+    const value = passwordField && passwordField.value;
+
+    return (
+      <NiceInputPassword
+        label="My password field"
+        name="passwordField"
+        value={value}
+        showSecurityLevelBar
+        onChange={this.handleChange}
+        LabelComponent={InputLabel}
+        InputComponent={TextField}
+        InputComponentProps={{
+          variant: 'outlined',
+          InputProps: {
+            endAdornment: <LockIcon />,
+          }
+        }}
+        securityLevels={[
+          {
+            descriptionLabel: <Typography>1 number</Typography>,
+            validator: /.*[0-9].*/,
+          },
+          {
+            descriptionLabel: <Typography>1 lowecase letter</Typography>,
+            validator: /.*[a-z].*/,
+          },
+          {
+            descriptionLabel: <Typography>1 uppercase letter</Typography>,
+            validator: /.*[A-Z].*/,
+          },
+        ]}
       />
     );
   }
