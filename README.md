@@ -147,7 +147,10 @@ You can provide a custom `className` to the Nice Input Password and custom `clas
 | placeholder | string | (empty string) | The placeholder used on input element `placeholder={placeholder}` |
 | className | string | (empty string) | Optional class to be passed to niceinputpassword context |
 | style | object | undefined | Optional style to be passed to input field |
-| Component | ReactComponent | input | Optional component to be used
+| LabelComponent | ReactComponent | input | Optional label component to be used
+| InputComponent | ReactComponent | input | Optional input component to be used
+| InputComponentProps | Object | null | Optional object to be passed to the custom `InputComponent`
+| renderLevelBarComponent | Render function | null | Optional function to return a custom levelbar component
 | normalClassName | string | 'none' | The className used on level color
 | dangerClassName | string | 'danger' | The className used on level color
 | warningClassName | string | 'warning' | The className used on level color

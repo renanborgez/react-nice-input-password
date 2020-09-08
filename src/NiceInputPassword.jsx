@@ -17,6 +17,7 @@ const propTypes = {
   LabelComponent: PropTypes.any,
   InputComponent: PropTypes.any,
   InputComponentProps: PropTypes.object,
+  renderLevelBarComponent: PropTypes.func,
   startAdornment: PropTypes.node,
   endAdornment: PropTypes.node,
   showSecurityLevelBar: PropTypes.bool,
@@ -59,6 +60,7 @@ const defaultProps = {
   onChange: () => {},
   startAdornment: null,
   endAdornment: null,
+  renderLevelBarComponent: null,
 };
 
 class NiceInputPassword extends React.Component {
@@ -124,14 +126,14 @@ class NiceInputPassword extends React.Component {
       LabelComponent,
       InputComponent,
       InputComponentProps,
+      renderLevelBarComponent,
     } = this.props;
 
     let inputClassName = '';
-    const levelsMarkerNode =
-    this.state.levels.map((item, index) => {
+    const levelsValidLength = this.state.levels.filter(level => level.isValid).length;
+    const levelsMarkerNode = this.state.levels.map((item, index) => {
       let markerClassName = '';
       const levelsLength = this.state.levels.length;
-      const levelsValidLength = this.state.levels.filter(level => level.isValid).length;
 
       if (value !== '') {
         switch (true) {
@@ -157,9 +159,7 @@ class NiceInputPassword extends React.Component {
         inputClassName = markerClassName;
       }
 
-      return (
-        <div className={markerClassName} key={`marker-${index}`} />
-      );
+      return <div className={markerClassName} key={`marker-${index}`} />;
     });
 
     const levelsDescriptionNode =
@@ -182,6 +182,14 @@ class NiceInputPassword extends React.Component {
         );
       });
 
+    const LevelBar = () => (renderLevelBarComponent ? (
+      renderLevelBarComponent(levelsValidLength)
+    ) : (
+      <div className="input-password__marker">
+        {levelsMarkerNode}
+      </div>
+    ));
+
     return (
       <div className={`form-group input-password ${className}`}>
         <InputLabel
@@ -201,10 +209,7 @@ class NiceInputPassword extends React.Component {
         />
         {securityLevels && securityLevels.length > 0 ? (
           <div className="input-password__level">
-            {showSecurityLevelBar ?
-              <div className="input-password__marker">
-                {levelsMarkerNode}
-              </div> : null }
+            {showSecurityLevelBar ? LevelBar() : null}
             {showSecurityLevelDescription ?
               <ul className="input-password__description">
                 {levelsDescriptionNode}
