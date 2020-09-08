@@ -1,7 +1,7 @@
 {
   "name": "react-nice-input-password",
-  "version": "2.6.1",
-  "description": "React input password component",
+  "version": "2.7.0",
+  "description": "React input password with builtin strength meter and Material UI support",
   "main": "dist/react-nice-input-password.js",
   "style": "dist/react-nice-input-password.css",
   "scripts": {
