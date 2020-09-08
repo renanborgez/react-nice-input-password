@@ -356,5 +356,42 @@ describe('components', () => {
       expect(onChange).toHaveBeenCalled();
       expect(onChange.mock.calls[0][0].isValid).toBe(false);
     });
+
+    it('renders with a custom levelBar component', () => {
+      const onChange = jest.fn();
+
+      const div = document.createElement('div');
+      render(<NiceInputPassword
+        label="myLabel"
+        name="myName"
+        value=""
+        securityLevels={[
+          {
+            descriptionLabel: 'Sample 1',
+            validator: () => true,
+          },
+          {
+            descriptionLabel: 'Sample 2',
+            validator: str => str.length > 3,
+          },
+        ]}
+        showSecurityLevelBar
+        renderLevelBarComponent={level => <div id="custom-levelbar">{level}</div>}
+        onChange={onChange}
+      />, div);
+
+      const input = div.querySelector('#myName');
+      input.value = 'A';
+      ReactTestUtils.Simulate.change(input);
+
+      const customLevelBar = div.querySelectorAll('#custom-levelbar');
+      expect(customLevelBar[0].innerHTML).toBe('1');
+
+      input.value = 'ABCD';
+      ReactTestUtils.Simulate.change(input);
+
+      div.querySelectorAll('#custom-levelbar');
+      expect(customLevelBar[0].innerHTML).toBe('2');
+    });
   });
 });
