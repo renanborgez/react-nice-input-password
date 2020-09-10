@@ -27,7 +27,7 @@ npm install react-nice-input-password --save
 
 ```js
 import NiceInputPassword from 'react-nice-input-password';
-import 'react-nice-input-password/dist/react-nice-input-password.css';
+import 'react-nice-input-password/dist/react-nice-input-password.css'; // Optional
 ```
 
 React-Nice-Input-Password uses the traditional input[type=password] behinde the cenes.
