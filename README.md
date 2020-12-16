@@ -7,6 +7,8 @@
 An input password built with and for [React](http://facebook.github.io/react/index.html)
 and works nicely with [Material-UI](https://material-ui.com/)
 
+You can easily setup your own custom validation rules with regex!
+
 ## Demo
 
 [https://codesandbox.io/s/o1v16rqqrz](https://codesandbox.io/s/o1v16rqqrz)
@@ -27,7 +29,13 @@ npm install react-nice-input-password --save
 
 ```js
 import NiceInputPassword from 'react-nice-input-password';
-import 'react-nice-input-password/dist/react-nice-input-password.css'; // Optional
+
+// If you wanna use the basic css from this library (Optional)
+import 'react-nice-input-password/dist/react-nice-input-password.css';
+
+// If you are using NextJs (server side rendering)
+import dynamic from "next/dynamic"
+const NiceInputPassword = dynamic(() => import('react-nice-input-password'), {ssr: false});
 ```
 
 React-Nice-Input-Password uses the traditional input[type=password] behinde the cenes.
